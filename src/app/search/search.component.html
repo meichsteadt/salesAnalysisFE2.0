@@ -1,0 +1,41 @@
+<div class="row">
+  <h3>Search results</h3>
+  <div class="col s6">
+    <div class="col s12 z-depth-3">
+      <h4 class="center-align">Products</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td><a routerLink="/products/{{product.id}}">{{product.number}}</a></td>
+            <td>{{product.category}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col s6">
+    <div class="col s12 z-depth-3">
+      <h4 class="center-align">Customers</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>State</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td><a routerLink="/customers/{{customer.id}}">{{customer.name}}</a></td>
+            <td>{{customer.state}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

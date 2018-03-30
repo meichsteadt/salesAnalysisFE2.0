@@ -1,0 +1,19 @@
+<div>
+  <h4 class="center-align">{{title}}</h4>
+  <table class="responsive-table">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Sales YTD</th>
+        <th>Growth</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td><a routerLink="/products/{{product.id}}">{{product.number}}</a></td>
+        <td>{{product.salesYtd | money}}</td>
+        <td>{{product.growth | money}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

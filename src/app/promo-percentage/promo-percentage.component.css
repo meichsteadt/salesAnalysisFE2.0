@@ -1,0 +1,14 @@
+h3 {
+  background: linear-gradient(to right, #323552, #F74B5f 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 2px;
+  display: block;
+}
+
+p {
+  color: #9493A2;
+  margin: 0 0 10px 0;
+  font-family: "Open Sans";
+  display: inline;
+}

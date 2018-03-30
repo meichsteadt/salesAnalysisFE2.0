@@ -1,0 +1,17 @@
+<div>
+  <h4 class="center-align">Recommendations</h4>
+  <table class="responsive-table">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Projected Sales</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recommendation of recommendations">
+        <td>{{recommendation[0]}}</td>
+        <td>{{recommendation[1] | currency}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

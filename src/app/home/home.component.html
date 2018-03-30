@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col l7 m12 s12">
+    <app-sales-numbers-chart *ngIf="salesNumbers.length > 0" [salesNumbers]="salesNumbers" class="component col s12 z-depth-3"></app-sales-numbers-chart>
+    <app-product-mix-chart [productMixObservable]="productMix" class="component col s12 z-depth-3"></app-product-mix-chart>
+  </div>
+  <div class="col l5 m12 s12">
+    <app-customer-list [customersObservable]="customers" title="Top Stores" class="component col s12 z-depth-3"></app-customer-list>
+    <app-product-list [productsObservable]="products" title="Best Sellers" class="component col s12 z-depth-3"></app-product-list>
+  </div>
+</div>

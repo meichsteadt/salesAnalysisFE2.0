@@ -1,0 +1,32 @@
+.header {
+  z-index: 9999;
+  height: 94px;
+}
+ul {
+  list-style: none;
+  display: table;
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+
+li {
+  display: inline-block;
+  padding: 15px;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+li i {
+  font-size: 24px;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.user {
+  width: 70px;
+}

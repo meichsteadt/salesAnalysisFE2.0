@@ -1,0 +1,23 @@
+.customer-name, .customer-name i {
+  background: linear-gradient(to right, #F74B5f, #33ccff 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.component {
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.salesYtd h4 {
+  color: #9493A2;
+  margin-top: 4px;
+  padding-left: 5px;
+  font-family: "Open Sans";
+}
+
+.salesYtd h5 {
+  color: #323552;
+  font-size: 22px;
+  margin: 0;
+}

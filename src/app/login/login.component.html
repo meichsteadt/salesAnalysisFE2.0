@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col s8 offset-s2">
+    <h3>Login</h3>
+    <p class="error">Username or password is incorrect</p>
+    <form #f="ngForm" (ngSubmit)="onSubmit(email.value, password.value)">
+      <div class="input-field">
+        <input name="email" ngModel type="email" id="email" #email="ngModel" required>
+        <label for="email">Email</label>
+      </div>
+      <div class="input-field">
+        <input name="password" ngModel type="password" id="password" #password="ngModel" required>
+        <label for="password">Password</label>
+      </div>
+      <button [disabled]="!f.form.valid" class="btn right" type="submit">Log in</button>
+    </form>
+  </div>
+</div>

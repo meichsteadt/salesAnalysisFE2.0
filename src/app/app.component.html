@@ -1,0 +1,7 @@
+<div *ngIf='showNav'>
+  <app-side-nav></app-side-nav>
+  <app-header></app-header>
+</div>
+<div class="container" [class.padded]="showNav">
+  <router-outlet></router-outlet>
+</div>

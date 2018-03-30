@@ -1,0 +1,19 @@
+<div>
+  <h4 class="center-align">{{title}}</h4>
+  <table class="responsive-table">
+    <thead>
+      <tr>
+        <th>Store</th>
+        <th>Sales YTD</th>
+        <th>Growth</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td><a routerLink="/customers/{{customer.id}}">{{customer.name}}</a></td>
+        <td>{{customer.salesYtd | money}}</td>
+        <td>{{customer.growth | money}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

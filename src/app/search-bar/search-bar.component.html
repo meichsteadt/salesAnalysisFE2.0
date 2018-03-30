@@ -1,0 +1,11 @@
+<nav id="search_nav">
+  <div class="nav-wrapper">
+    <form #searchForm="ngForm" (ngSubmit)="onSubmit(search.value)">
+      <div class="input-field">
+        <input id="search" type="search" name="search" ngModel #search="ngModel"/>
+        <label class="label-icon active" htmlFor="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
+</nav>

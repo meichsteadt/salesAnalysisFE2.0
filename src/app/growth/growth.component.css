@@ -1,0 +1,20 @@
+h5 {
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-top: 2.5px;
+}
+
+h2 i {
+  font-size: 64px;
+  vertical-align: text-bottom;
+}
+
+.positive {
+  color: #33ccff;
+}
+
+.negative {
+  color: #F74B5f;
+}

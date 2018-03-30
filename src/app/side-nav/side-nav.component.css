@@ -1,0 +1,73 @@
+.sideNav {
+    background-color: #323552;
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    color: #fff;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .sideNav .logo {
+    text-align: center;
+  }
+
+  .sideNav .logo, .logo i {
+    font-size: 48px;
+    background: linear-gradient(to right, #F74B5f 40%, #33ccff );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .sideNav .logo i{
+    background: linear-gradient(to top right, #33ccff, #F74B5f 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 64px;
+  }
+
+  .sideNav .logo:hover {
+    cursor: pointer;
+  }
+
+  .sideNav ul {
+    list-style: none;
+    margin-left: 20px;
+  }
+
+  .sideNav li a{
+    font-size: 18px;
+    display: block;
+    margin: 10px auto;
+    padding: 5px 5px 5px 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .sideNav a.active {
+    background-color: #27293f;
+  }
+
+  .sideNav a.active i {
+    color: #33ccff;
+  }
+
+  .sideNav li:hover {
+    color: #33ccff;
+    cursor: pointer;
+  }
+
+  .sideNav i  {
+    vertical-align: text-top;
+    font-size: 24px;
+    padding-right: 4px;
+  }
+
+  .sideNav li.active i {
+    color: #33ccff;
+  }

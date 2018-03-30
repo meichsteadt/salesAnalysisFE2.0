@@ -1,0 +1,17 @@
+<div class="product">
+  <h3 class="product-name">{{(product)?.number}}</h3>
+
+  <div class="salesYtd">
+    <h5>Sales YTD</h5>
+    <h4>{{(product)?.salesYtd | money}}</h4>
+  </div>
+  <div class="row">
+    <div class="col l7 m12 s12">
+      <app-sales-numbers-chart *ngIf="salesNumbers.length > 0" [salesNumbers]="salesNumbers" class="component col s12 z-depth-3"></app-sales-numbers-chart>
+    </div>
+    <div class="col l5 m12 s12">
+        <app-growth [growth]="(product)?.growth" class="component col s12 z-depth-3"></app-growth>
+        <app-customer-list [customersObservable]="customers" title="Top Customers" class="component col s12 z-depth-3"></app-customer-list>
+    </div>
+  </div>
+</div>

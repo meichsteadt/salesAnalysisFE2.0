@@ -1,0 +1,24 @@
+nav {
+    width: 400px;
+    box-shadow: none;
+    background-color: #fff;
+    color: #333;
+  }
+
+  nav .input-field label {
+    top: -20px;
+  }
+
+  label i {
+    color: #444;
+  }
+
+  #search_nav i {
+    top: -10px;
+  }
+
+  input#search {
+    border-bottom: 1px solid #323552 !important;
+    box-shadow: 0 1px #323552 !important;
+    height: 45px;
+}

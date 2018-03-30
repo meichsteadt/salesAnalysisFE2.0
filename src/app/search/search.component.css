@@ -1,0 +1,9 @@
+h3, h3 i {
+  background: linear-gradient(to right, #F74B5f, #33ccff 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h4 {
+  color: #323552;
+}
