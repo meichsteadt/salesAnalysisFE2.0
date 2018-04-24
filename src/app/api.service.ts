@@ -23,23 +23,23 @@ export class ApiService {
     return isDevMode()? backendConfig.devUrl : backendConfig.url;
   }
 
-  getCustomers(): Observable<any> {
-    return this.http.get(this.url + "/customers", {headers: this.headers})
+  getCustomers(pageNumber = 1, sortBy): Observable<any> {
+    return this.http.get(this.url + "/customers?page_number=" + pageNumber + "&sort_by=" + sortBy, {headers: this.headers})
   }
 
-  getProducts(): Observable<any> {
-    return this.http.get(this.url + "/products", {headers: this.headers})
+  getProducts(pageNumber = 1, sortBy): Observable<any> {
+    return this.http.get(this.url + "/products?page_number=" + pageNumber + "&sort_by=" + sortBy, {headers: this.headers})
   }
 
-  getProductsByCategory(category, customerId = null) {
+  getProductsByCategory(category, customerId = null, pageNumber = 1, sortBy = 'sales') {
     var url;
     if(customerId) {
-      url = this.url + "/customers/" + customerId + "/categories" + category
+      url = this.url + "/customers/" + customerId + "/categories/" + category
     }
     else {
       url = this.url + "/categories/" + category
     }
-    return this.http.get(url, {headers: this.headers})
+    return this.http.get(url + "?page_number=" + pageNumber + "&sort_by=" + sortBy, {headers: this.headers})
   }
 
   getAllProductsByCategory(customerId = null) {
@@ -53,27 +53,37 @@ export class ApiService {
     return this.http.get(url, {headers: this.headers})
   }
 
-  getBestSellers(customerId = null): Observable<any> {
-    var url;
-    if(customerId) {
-      url = this.url + "/customers/" + customerId + "/best_sellers";
+  getCustomerProducts(customerId, productId = null, pageNumber = 1, sortBy = "sales"): Observable<any> {
+    if(productId) {
+      return this.http.get(this.url + "/products/" + customerId + "/customer_products?page_number=" + pageNumber + "&sort_by=" + sortBy, {headers: this.headers})
     }
     else {
-      url = this.url + "/best_sellers"
+      return this.http.get(this.url + "/customers/" + customerId + "/customer_products?page_number=" + pageNumber + "&sort_by=" + sortBy, {headers: this.headers})
     }
-    return this.http.get(url, {headers: this.headers})
   }
 
   getCustomer(id): Observable<any>  {
     return this.http.get(this.url + "/customers/" + id, {headers: this.headers})
   }
 
+  getMissingBestSellers(customerId, pageNumber = 1) {
+    return this.http.get(this.url + "/customers/" + customerId + "/missing_best_sellers?page_number=" + pageNumber, {headers: this.headers})
+  }
+
+  getMissingNewItems(customerId, pageNumber = 1) {
+    return this.http.get(this.url + "/customers/" + customerId + "/missing_new_items?page_number=" + pageNumber, {headers: this.headers})
+  }
+
+  getRecommendations(customerId, pageNumber = 1) {
+    return this.http.get(this.url + "/customers/" + customerId + "/recommendations?page_number=" + pageNumber, {headers: this.headers})
+  }
+
   getProduct(id) {
     return this.http.get(this.url + "/products/" + id, {headers: this.headers})
   }
 
-  getProductCustomers(productId) {
-    return this.http.get(this.url + "/customers?product_id=" + productId, {headers: this.headers})
+  getProductCustomers(productId, pageNumber = 1) {
+    return this.http.get(this.url + "/products/" + productId + "/customer_products?page_number=" + pageNumber, {headers: this.headers})
   }
 
   getProductMix(customerId = null): Observable<Object> {
@@ -91,6 +101,7 @@ export class ApiService {
     this.http.post(this.url + "/authenticate", {email: email, password: password}).subscribe(
       token => {
         localStorage.setItem('homeleganceAuthToken', token['auth_token']);
+        localStorage.setItem('homeleganceTimestamp', (new Date().getTime() + ""));
         _this.success()
       },
       error => {
@@ -111,6 +122,10 @@ export class ApiService {
     else {
       return ""
     }
+  }
+
+  getUserInfo(){
+    return this.http.get(this.url + "/users", {headers: this.headers})
   }
 
   getSalesNumbers(customerId = null, productId = null, month = null, year = null): Observable<any> {
@@ -136,8 +151,8 @@ export class ApiService {
     return this.http.get(url, {headers: this.headers})
   }
 
-  search(query) {
-    return this.http.get(this.url + "/search?query=" + query, {headers: this.headers})
+  search(query, pageNumber = 1) {
+    return this.http.get(this.url + "/search?query=" + query + "&page_number=" + pageNumber, {headers: this.headers})
   }
 
   getPromoPercentage() {

@@ -1,34 +1,6 @@
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th>%</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Dining</td>
-      <td>{{(productMix)?.dining | percent: '0.2'}}</td>
-    </tr>
-    <tr>
-      <td>Seating</td>
-      <td>{{(productMix)?.seating | percent: '0.2'}}</td>
-    </tr>
-    <tr>
-      <td>Bedroom</td>
-      <td>{{(productMix)?.bedroom | percent: '0.2'}}</td>
-    </tr>
-    <tr>
-      <td>Youth</td>
-      <td>{{(productMix)?.youth | percent: '0.2'}}</td>
-    </tr>
-    <tr>
-      <td>Occasional</td>
-      <td>{{(productMix)?.occasional | percent: '0.2'}}</td>
-    </tr>
-    <tr>
-      <td>Home</td>
-      <td>{{(productMix)?.home | percent: '0.2'}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="d3Pie">
+    <div class="header">
+      <h5>Product Mix</h5>
+    </div>
+    <div id="chart" class="chart-container"></div>
+</div>

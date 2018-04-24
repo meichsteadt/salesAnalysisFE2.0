@@ -1,8 +1,17 @@
 <div class="row">
-  <div class="col s7">
-    <app-sales-numbers-chart *ngIf="salesNumbers.length > 0" [salesNumbers]="salesNumbers" class="component col s12 z-depth-3"></app-sales-numbers-chart>
+  <h1 class="title">Customers</h1>
+  <div class="col s12">
+    <app-sales-numbers-chart *ngIf="salesNumbers.length > 0" [salesYtd]="salesYtd" [salesNumbers]="salesNumbers" [period]="'previous 12 months'" class="component col s12 z-depth-3"></app-sales-numbers-chart>
   </div>
-  <div class="col s5">
-    <app-customer-list [customersObservable]="customersObservable" title="Top Customers" (emitCustomer)="receiveCustomer($event)" class="component col s12 z-depth-3"></app-customer-list>
+  <div class="col s12">
+    <app-customer-list
+      [customersObservable]="customersObservable"
+      title="Top Customers"
+      (emitCustomer)="receiveCustomer($event)"
+      (emitPage)="receivePage($event)"
+      [sortBy]="sortBy"
+      (emitSort)="receiveSortBy($event)"
+      class="component col s12 z-depth-3"
+    ></app-customer-list>
   </div>
 </div>

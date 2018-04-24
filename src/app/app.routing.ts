@@ -9,6 +9,9 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 import { BestSellersComponent } from './best-sellers/best-sellers.component';
+import { GroupsComponent } from './groups/groups.component';
+import { NewItemsComponent } from './new-items/new-items.component';
+import { SalesNumbersComponent } from './sales-numbers/sales-numbers.component';
 
 import { AuthGuardService } from './auth-guard.service';
 
@@ -50,6 +53,18 @@ const appRoutes: Routes = [
   {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path: 'groups',
+    component: GroupsComponent
+  },
+  {
+    path: 'new-items',
+    component: NewItemsComponent
+  },
+  {
+    path: 'sales-numbers',
+    component: SalesNumbersComponent
   }
 ]
 

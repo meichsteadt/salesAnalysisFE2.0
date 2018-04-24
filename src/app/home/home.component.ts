@@ -20,29 +20,88 @@ export class HomeComponent implements OnInit {
   products: Observable<any>;
   customers: Observable<any>;
   productMix: Observable<any>;
-  salesNumbers: SalesNumber[] = [];
+  salesNumbers1: SalesNumber[] = [];
+  salesNumbers2: SalesNumber[] = [];
+  salesYtd: number;
+  salesLastYear: number;
+  salesYear: number;
+  growth: number;
+  period: string = "previous 12 months";
+  today: Date = new Date();
+  productsSortBy: string = "sales";
+  customersSortBy: string = "sales";
   constructor(private api: ApiService) { }
 
   ngOnInit() {
     //get products
-    this.products = this.api.getProducts()
+    this.getProducts(1);
 
     //get product mix
-    this.productMix = this.api.getProductMix()
+    this.productMix = this.api.getProductMix();
 
     //get customers
-    this.customers = this.api.getCustomers()
+    this.getCustomers(1);
+
+    //get salesYtd, growth, and salesLastYear
+    this.api.getUserInfo().subscribe(response => {
+      this.salesYtd = response["sales_year"];
+      this.salesLastYear = response["prev_sales_year"];
+      this.growth = response["growth"];
+      this.salesYear = response["sales_year"]
+    })
 
     //get sales numbers
     this.api.getSalesNumbers().subscribe(salesNumbers => {
+      var tempArr = [];
       salesNumbers.map((salesNumber) => {
-        this.salesNumbers.push(new SalesNumber(
+        this.salesNumbers1.push(new SalesNumber(
           salesNumber[0],
           salesNumber[1],
           salesNumber[2]
         ))
       })
     })
+
+    this.api.getSalesNumbers(null, null, 10, 2017).subscribe(salesNumbers => {
+      salesNumbers.map((salesNumber) => {
+        this.salesNumbers2.push(new SalesNumber(
+          salesNumber[0],
+          salesNumber[1],
+          salesNumber[2]
+        ))
+      })
+    })
+
+  }
+
+  getProducts(pageNumber) {
+    this.products = this.api.getProducts(pageNumber, this.productsSortBy);
+  }
+
+  getCustomers(page) {
+    this.customers = this.api.getCustomers(page, this.customersSortBy);
+  }
+
+  receivePeriod(period) {
+    this.period = period;
+  }
+
+  receiveProductPage(page) {
+    this.getProducts(page);
+  }
+
+  receiveCustomerPage(page) {
+    this.getCustomers(page);
+  }
+
+  receiveProductSortby(sortBy) {
+    this.productsSortBy = sortBy;
+    this.getProducts(1)
+  }
+
+  receiveCustomerSortby(sortBy) {
+    this.customersSortBy = sortBy;
+    this.getCustomers(1)
   }
 
 }

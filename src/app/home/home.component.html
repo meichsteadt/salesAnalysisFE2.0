@@ -1,10 +1,41 @@
 <div class="row">
   <div class="col l7 m12 s12">
-    <app-sales-numbers-chart *ngIf="salesNumbers.length > 0" [salesNumbers]="salesNumbers" class="component col s12 z-depth-3"></app-sales-numbers-chart>
-    <app-product-mix-chart [productMixObservable]="productMix" class="component col s12 z-depth-3"></app-product-mix-chart>
+    <app-sales-numbers-chart
+      *ngIf="salesNumbers2.length > 0 && salesNumbers1.length > 0"
+      [salesYtd]="salesYtd"
+      [salesNumbers]="salesNumbers1"
+      [salesNumbers2]="salesNumbers2"
+      [period]="period"
+      (emitPeriod)="receivePeriod($event)"
+      class="component col s12 z-depth-3">
+    </app-sales-numbers-chart>
+    <app-customer-list
+      [customersObservable]="customers"
+      title="Top Stores"
+      (emitPage)="receiveCustomerPage($event)"
+      (emitSort)="receiveCustomerSortby($event)"
+      [sortBy]="customersSortBy"
+      class="component col s12 z-depth-3">
+    </app-customer-list>
   </div>
   <div class="col l5 m12 s12">
-    <app-customer-list [customersObservable]="customers" title="Top Stores" class="component col s12 z-depth-3"></app-customer-list>
-    <app-product-list [productsObservable]="products" title="Best Sellers" class="component col s12 z-depth-3"></app-product-list>
+    <app-growth
+      [growth]="growth"
+      class="component col s12 z-depth-3">
+    </app-growth>
+    <app-product-mix-chart
+      *ngIf="productMix"
+      [productMixObservable]="productMix"
+      class="component col s12 z-depth-3">
+    </app-product-mix-chart>
+    <app-product-list
+      [productsObservable]="products"
+      title="Best Sellers"
+      (emitPage)="receiveProductPage($event)"
+      (emitSort)="receiveProductSortby($event)"
+      [sortBy]="productsSortBy"
+      class="component col s12 z-depth-3"
+    >
+    </app-product-list>
   </div>
 </div>

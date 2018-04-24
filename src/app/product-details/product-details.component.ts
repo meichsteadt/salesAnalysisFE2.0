@@ -24,15 +24,14 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe((urlParameters) => {
       this.productId = parseInt(urlParameters['id']);
       this.apiService.getProduct(this.productId).subscribe(response => {
-        console.log(response);
         //create product
         this.product = new Product(
-          response["product"]["id"],
-          response["product"]["number"],
-          response["sales_ytd"],
+          response["id"],
+          response["number"],
+          response["sales_year"],
           response["growth"],
-          response["product"]["category"],
-          response["sales_last_year"]
+          response["category"],
+          response["prev_sales_year"]
         )
       });
 
@@ -49,4 +48,7 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  receivePage(page) {
+    this.customers = this.apiService.getProductCustomers(this.productId, page);
+  }
 }

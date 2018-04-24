@@ -1,1 +1,13 @@
-<div class="bar-chart"></div>
+<div style="position: relative;">
+  <div class="row" [style.margin-bottom.px]="0">
+    <div class="col s6">
+      <h3>{{salesYtd | money}}</h3>
+      <p>Sales, {{period}}</p>
+    </div>
+    <div *ngIf="false" class="col s6 center-align">
+      <button (click)="setPeriod('previous 12 months')" [class.active]="active('previous 12 months')" class="period-btn waves-effect prevMonths">12 Months</button>
+      <button (click)="setPeriod('YTD')" [class.active]="active('YTD')" class="period-btn waves-effect YTD">YTD</button>
+    </div>
+  </div>
+  <div class="bar-chart1" (scroll)="scroll()"></div>
+</div>

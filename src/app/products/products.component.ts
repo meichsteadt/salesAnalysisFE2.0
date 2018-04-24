@@ -12,15 +12,28 @@ import { Observable } from 'rxjs/Rx';
 })
 export class ProductsComponent implements OnInit {
   products: Observable<any>;
+  sortBy: string = "sales";
   productMix;
   constructor(private api: ApiService) { }
 
   ngOnInit() {
     //get products
-    this.products = this.api.getProducts()
-
+    this.getProducts(1)
     //get productMix
     this.productMix = this.api.getProductMix()
+  }
+
+  getProducts(pageNumber) {
+    this.products = this.api.getProducts(pageNumber, this.sortBy);
+  }
+
+  receivePage(page) {
+    this.getProducts(page);
+  }
+
+  receiveSortBy(sortBy) {
+    this.sortBy = sortBy;
+    this.getProducts(1);
   }
 
 }

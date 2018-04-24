@@ -18,3 +18,27 @@ h4 {
 .padded {
   padding: 15px;
 }
+
+.title {
+  color: #323552;
+}
+
+.carousel .indicators li.indicator-item {
+  background-color: rgba(0,0,0, 0.5) !important;
+}
+
+.carousel .indicators .indicator-item.active {
+  background-color: #000 !important;
+}
+
+td {
+  padding: 15px 0 !important;
+}
+
+.positive {
+  color: #3c763d;
+}
+
+.negative {
+  color: #a94442;
+}

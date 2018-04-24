@@ -34,6 +34,8 @@ import { RecommendationsComponent } from './recommendations/recommendations.comp
 import { PromoPercentageComponent } from './promo-percentage/promo-percentage.component';
 import { GrowthComponent } from './growth/growth.component';
 import { MoneyPipe } from './money.pipe';
+import { PaginationComponent } from './pagination/pagination.component';
+import { MissingItemsComponent } from './missing-items/missing-items.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { MoneyPipe } from './money.pipe';
     RecommendationsComponent,
     PromoPercentageComponent,
     GrowthComponent,
-    MoneyPipe
+    MoneyPipe,
+    PaginationComponent,
+    MissingItemsComponent
   ],
   imports: [
     BrowserModule,

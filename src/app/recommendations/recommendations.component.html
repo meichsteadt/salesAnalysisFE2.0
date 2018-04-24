@@ -1,17 +1,21 @@
 <div>
-  <h4 class="center-align">Recommendations</h4>
+  <h5 class="center-align">Recommendations</h5>
   <table class="responsive-table">
     <thead>
       <tr>
         <th>Number</th>
-        <th>Projected Sales</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let recommendation of recommendations">
-        <td>{{recommendation[0]}}</td>
-        <td>{{recommendation[1] | currency}}</td>
+        <td><a routerLink="/products/{{recommendation.id}}">{{recommendation.number}}</a></td>
       </tr>
     </tbody>
   </table>
+  <app-pagination
+    *ngIf="pages"
+    [pages]="pages"
+    [pageNumber]="pageNumber"
+    (emitPage)="receivePage($event, 'bestSellers')"
+  ></app-pagination>
 </div>

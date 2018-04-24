@@ -1,0 +1,74 @@
+h3 {
+  background: linear-gradient(to right, #F74B5f, #ff6600 40%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+
+p {
+  color: #9493A2;
+  font-family: "Open Sans";
+  margin-top: 0;
+}
+
+.legend {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+svg:not(:root) {
+  overflow: visible !important;
+}
+
+.tooltip {
+  background: #eee;
+  box-shadow: 0 0 5px #999999;
+  color: #333;
+  display: none;
+  font-size: 12px;
+  left: 130px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 95px;
+  width: 80px;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.period-btn {
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 2px solid;
+  background-color: #fff;
+  font-family: 'Open Sans';
+  margin: 1.46rem 0 1.168rem 0;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.YTD {
+  border-color: #ff6600;
+  color: #ff6600;
+}
+
+.prevMonths {
+  border-color: #F74B5f;
+  color: #F74B5f;
+}
+
+.YTD.active {
+  color: #fff;
+  background-color: #ff6600;
+}
+
+.prevMonths.active {
+  color: #fff;
+  background-color: #F74B5f;
+}
+
+.bar-chart1 {
+  overflow: scroll;
+}

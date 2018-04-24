@@ -12,3 +12,7 @@ p {
   font-family: "Open Sans";
   display: inline;
 }
+
+h5 {
+  margin-bottom: 0;
+}

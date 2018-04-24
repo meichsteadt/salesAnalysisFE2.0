@@ -1,8 +1,19 @@
 <div class="row">
-  <div class="col s6">
-    <app-product-list [productsObservable]="products" title="Products" class="component col s12 z-depth-3"></app-product-list>
+  <h1 class="title">Products</h1>
+  <div class="col l7 m12 s12">
+    <app-product-list
+      [productsObservable]="products"
+      title="Products"
+      (emitPage)="receivePage($event)"
+      [sortBy]="sortBy"
+      (emitSort)="receiveSortBy($event)"
+      class="component col s12 z-depth-3"
+    ></app-product-list>
   </div>
-  <div class="col s6">
-    <app-product-mix-chart [productMixObservable]="productMix" class="component col s12 z-depth-3"></app-product-mix-chart>
+  <div class="col l5 m12 s12">
+    <app-product-mix-chart
+      [productMixObservable]="productMix"
+      class="component col s12 z-depth-3"
+    ></app-product-mix-chart>
   </div>
 </div>

@@ -1,24 +1,50 @@
 <div class="customer">
-  <h3 class="customer-name">{{(customer)?.name}}</h3>
-
-  <div class="salesYtd">
-    <div class="row">
-      <div class="col s6">
-        <h5>Sales YTD</h5>
-        <h4>{{(customer)?.salesYtd | money}}</h4>
-      </div>
-    </div>
-  </div>
+  <h1 class="customer-name">{{(customer)?.name}}</h1>
   <div class="row">
     <div class="col l7 m12 s12">
-      <app-sales-numbers-chart *ngIf="salesNumbers.length > 0" [salesNumbers]="salesNumbers" class="component col s12 z-depth-3"></app-sales-numbers-chart>
-      <app-recommendations [recommendations]="recommendations" class="component col s12 z-depth-3"></app-recommendations>
+      <app-sales-numbers-chart
+        *ngIf="salesNumbers.length > 0"
+        [salesYtd]="(customer)?.salesYtd"
+        [salesNumbers]="salesNumbers"
+        (emitPeriod)="receivePeriod($event)"
+        [period]="period"
+        class="component col s12 z-depth-3"
+        ></app-sales-numbers-chart>
+      <app-product-list
+        [productsObservable]="customerProducts"
+        (emitPage)="receivePage($event)"
+        (emitSort)="receiveSort($event)"
+        [sortBy]="sortBy"
+        title="Best Sellers"
+        class="component col s12 z-depth-3"
+      ></app-product-list>
     </div>
     <div class="col l5 m12 s12">
-      <app-growth [growth]="(customer)?.growth" class="component col s12 z-depth-3"></app-growth>
-      <app-promo-percentage *ngIf="percentReady()" [percentage]="(customer)?.promoPercentage" [globalPercentage]="promoPercentage" class="component col s12 z-depth-3"></app-promo-percentage>
-      <app-product-mix-chart [productMixObservable]="productMix" class="component col s12 z-depth-3"></app-product-mix-chart>
-      <app-product-list [productsObservable]="bestSellers" title="Best Sellers" class="component col s12 z-depth-3"></app-product-list>
+      <app-growth
+        [growth]="(customer)?.growth"
+        class="component col s12 z-depth-3"
+      ></app-growth>
+      <app-promo-percentage
+        *ngIf="percentReady()"
+        [percentage]="(customer)?.promoPercentage"
+        [globalPercentage]="promoPercentage"
+        class="component col s12 z-depth-3"
+      ></app-promo-percentage>
+      <app-product-mix-chart
+        [productMixObservable]="productMix"
+        class="component col s12 z-depth-3"
+      ></app-product-mix-chart>
+      <app-missing-items
+        [newItemsObservable]="missingNewItems"
+        [bestSellersObservable]="missingBestSellers"
+        (emitPage)="receiveMissingItems($event)"
+        class="component col s12 z-depth-3"
+      ></app-missing-items>
+      <app-recommendations
+        [recommendationsObservable]="recommendations"
+        (emitPage)="receiveRecommendations($event)"
+        class="component col s12 z-depth-3"
+      ></app-recommendations>
     </div>
   </div>
 </div>

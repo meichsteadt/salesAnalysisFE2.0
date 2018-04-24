@@ -1,14 +1,55 @@
 <div class="row">
-  <div class="col s4">
-    <app-product-list [productsObservable]="dining" title="Dining" class="component col s12 z-depth-3"></app-product-list>
-    <app-product-list [productsObservable]="youth" title="Youth" class="component col s12 z-depth-3"></app-product-list>
+  <h1 class="title">Best Sellers</h1>
+  <div class="col s6">
+    <app-product-list
+      [productsObservable]="dining"
+      title="Dining"
+      (emitPage)="receivePage('dining', $event)"
+      (emitSort)="receiveSort('dining', $event)"
+      [sortBy]="diningSortBy"
+      class="component col s12 z-depth-3"
+    ></app-product-list>
+    <app-product-list
+      [productsObservable]="seating"
+      title="Seating"
+      (emitPage)="receivePage('seating', $event)"
+      (emitSort)="receiveSort('seating', $event)"
+      [sortBy]="seatingSortBy"
+      class="component col s12 z-depth-3"
+    ></app-product-list>
+    <app-product-list
+      [productsObservable]="occasional"
+      title="Occasional"
+      (emitPage)="receivePage('occasional', $event)"
+      (emitSort)="receiveSort('occasional', $event)"
+      [sortBy]="occasionalSortBy"
+      class="component col s12 z-depth-3"
+    ></app-product-list>
   </div>
-  <div class="col s4">
-    <app-product-list [productsObservable]="bedroom" title="Bedroom" class="component col s12 z-depth-3"></app-product-list>
-    <app-product-list [productsObservable]="occasional" title="Occasional" class="component col s12 z-depth-3"></app-product-list>
-  </div>
-  <div class="col s4">
-    <app-product-list [productsObservable]="seating" title="Seating" class="component col s12 z-depth-3"></app-product-list>
-    <app-product-list [productsObservable]="home" title="Home" class="component col s12 z-depth-3"></app-product-list>
+  <div class="col s6">
+    <app-product-list
+      [productsObservable]="bedroom"
+      title="Bedroom"
+      (emitPage)="receivePage('bedroom', $event)"
+      (emitSort)="receiveSort('bedroom', $event)"
+      [sortBy]="bedroomSortBy"
+      class="component col s12 z-depth-3"
+    ></app-product-list>
+    <app-product-list
+      [productsObservable]="youth"
+      title="Youth"
+      (emitPage)="receivePage('youth', $event)"
+      (emitSort)="receiveSort('youth', $event)"
+      [sortBy]="youthSortBy"
+      class="component col s12 z-depth-3"
+    ></app-product-list>
+    <app-product-list
+      [productsObservable]="home"
+      title="Home"
+      (emitPage)="receivePage('home', $event)"
+      (emitSort)="receiveSort('home', $event)"
+      [sortBy]="homeSortBy"
+      class="component col s12 z-depth-3"
+    ></app-product-list>
   </div>
 </div>

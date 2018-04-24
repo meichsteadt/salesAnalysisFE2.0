@@ -13,10 +13,13 @@ import { Observable } from 'rxjs/Rx';
 export class CustomersComponent implements OnInit {
   customersObservable: Observable<any>;
   salesNumbers: SalesNumber[] = [];
+  salesYtd: number = 0;
+  salesLastYear: number = 0;
+  sortBy: string = "sales";
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-    this.customersObservable = this.api.getCustomers();
+    this.customersObservable = this.api.getCustomers(1, "sales");
   }
 
   receiveCustomer(customer) {
@@ -25,6 +28,25 @@ export class CustomersComponent implements OnInit {
       customer.salesYtd,
       customer.salesLastYear
     ))
+    this.salesYtd += customer.salesYtd;
+    this.salesLastYear += customer.salesLastYear;
+  }
+
+  receivePage(page) {
+    this.resetSalesNumbers();
+    this.customersObservable = this.api.getCustomers(page, this.sortBy);
+  }
+
+  receiveSortBy(sortBy){
+    this.resetSalesNumbers();
+    this.sortBy = sortBy;
+    this.customersObservable = this.api.getCustomers(1, sortBy);
+  }
+
+  resetSalesNumbers() {
+    this.salesNumbers = [];
+    this.salesYtd = 0;
+    this.salesLastYear = 0;
   }
 
 }

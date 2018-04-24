@@ -1,8 +1,8 @@
 <div>
   <h5>Growth</h5>
-  <h2>
+  <h3>
     {{growth | money}}
-    <i *ngIf="positive" class="material-icons positive">trending_up</i>
-    <i *ngIf="!positive" class="material-icons negative">trending_down</i>
-  </h2>
+    <i *ngIf="positive()" class="material-icons positive">trending_up</i>
+    <i *ngIf="!positive()" class="material-icons negative">trending_down</i>
+  </h3>
 </div>

@@ -3,17 +3,30 @@
   <table class="responsive-table">
     <thead>
       <tr>
-        <th>Store</th>
-        <th>Sales YTD</th>
-        <th>Growth</th>
+        <th (click)="sendSortBy('name')">
+          <i class="material-icons" *ngIf="sorted('name')">arrow_drop_down</i>
+          Store
+        </th>
+        <th (click)="sendSortBy('sales')">
+          <i class="material-icons" *ngIf="sorted('sales')">arrow_drop_down</i>
+          Sales
+        </th>
+        <th (click)="sendSortBy('growth')">
+          <i class="material-icons" *ngIf="sorted('growth')">arrow_drop_down</i>
+          Growth
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let customer of customers">
         <td><a routerLink="/customers/{{customer.id}}">{{customer.name}}</a></td>
         <td>{{customer.salesYtd | money}}</td>
-        <td>{{customer.growth | money}}</td>
+        <td [ngClass]="growth(customer.growth)">{{customer.growth | money}}</td>
       </tr>
     </tbody>
   </table>
+  <div *ngIf="pages > 1">
+    <hr>
+    <app-pagination [pages]="pages" [pageNumber]="pageNumber" (emitPage)="receivePage($event)"></app-pagination>
+  </div>
 </div>
