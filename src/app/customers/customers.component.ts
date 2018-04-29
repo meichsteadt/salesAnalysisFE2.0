@@ -28,8 +28,8 @@ export class CustomersComponent implements OnInit {
       customer.salesYtd,
       customer.salesLastYear
     ))
-    this.salesYtd += customer.salesYtd;
-    this.salesLastYear += customer.salesLastYear;
+    this.salesYtd += parseFloat(customer.salesYtd);
+    this.salesLastYear += parseFloat(customer.salesLastYear);
   }
 
   receivePage(page) {

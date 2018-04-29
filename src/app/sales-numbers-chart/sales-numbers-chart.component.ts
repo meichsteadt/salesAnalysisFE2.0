@@ -7,6 +7,7 @@ import * as M from 'materialize-css';
 
 declare var Materialize: any;
 declare var $: any;
+declare const InstallTrigger: any;
 
 @Component({
   selector: 'app-sales-numbers-chart',
@@ -23,7 +24,11 @@ export class SalesNumbersChartComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges() {
-    this.drawChart('bar-chart1', this.salesNumbers)
+    this.drawChart('bar-chart1', this.salesNumbers);
+    if(typeof InstallTrigger !== 'undefined') {
+      console.log(typeof InstallTrigger)
+      $('.bar-chart1').css('position', 'relative');
+    }
   }
 
   active(period) {
@@ -171,6 +176,17 @@ export class SalesNumbersChartComponent implements OnChanges {
           return "$ " + newString
         }
 
+        function getNodePos(el)
+          {
+              var body = d3.select('body').node();
+
+              for (var lx = 0, ly = 0;
+                   el != null && el != body;
+                   lx += (el.offsetLeft || el.clientLeft), ly += (el.offsetTop || el.clientTop), el = (el.offsetParent || el.parentNode))
+                  ;
+              return {x: lx, y: ly};
+          }
+
             currentYear.on('mouseover', function(d: any) {
               tooltip.select('.amount').html(moneyPipe(d.currentYear));
               tooltip.style('display', 'block');
@@ -199,8 +215,10 @@ export class SalesNumbersChartComponent implements OnChanges {
             });
 
             currentYear.on('mousemove', function(d) {
+              tooltip.style('left', x + "px" );
               tooltip.style('top', (d3.event.layerY + 10) + 'px')
                     .style('left', (d3.event.layerX + 10) + 'px')
+
             });
 
             lastYear.on('mouseout', function() {

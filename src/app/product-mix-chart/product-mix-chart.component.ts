@@ -25,7 +25,7 @@ export class ProductMixChartComponent implements OnInit {
 
   drawChart(productMix) {
     var margin = {top: 20, right: 20, bottom: 20, left: 40}
-    var width = ((window.innerWidth - 200) * 0.9 * (5/12)) * 0.9 - margin.left - margin.right;
+    var width = (((window.innerWidth * 0.9 - 200) * (5/12)) * 0.9) - margin.left - margin.right;
     if(window.innerWidth <= 992) {
       width = ((window.innerWidth - 200) * 0.9) * 0.9 - margin.left - margin.right;
     }
@@ -108,7 +108,7 @@ export class ProductMixChartComponent implements OnInit {
         var total = d3.sum(productMixArr.map(function(d){
             return d.amount;
         }));
-        let percent = Math.round(1000 * d.data.amount / total) / 10;
+        let percent = Math.round(1000 * d.data.amount) / 10;
         tooltip.select('.contributor').html(d.data.label);
         tooltip.select('.amount').html(Math.round(d.data.amount * 10000) / 100 + " %");
         tooltip.style('display', 'block');
